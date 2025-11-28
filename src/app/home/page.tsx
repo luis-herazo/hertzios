@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Box, Container, Grid, Skeleton, Button, Card, CardContent, Typography, Avatar, TextField } from "@mui/material";
 import AppTitle from "../../components/appTitle";
 import SubTitle from "../../components/subTitle";
@@ -15,6 +16,12 @@ const description = 'Ahorra tiempo, optimiza procesos y escala tus operaciones c
 const subtitle = 'Nuestras Soluciones para tu empresa'
 
 const styles = {
+    img: {
+        width: '100%',
+        height: 'auto',
+        maskImage: 'radial-gradient(circle, black 50%, transparent 100%)',
+        WebkitMaskImage: 'radial-gradient(circle, black 50%, transparent 100%)',
+    },
     container1: {
         flexGrow: 1,
         paddingTop: 15,
@@ -48,25 +55,25 @@ const styles = {
         flexGrow: 1,
         fontSize: 14,
         fontWeight: '400',
-        color: '#6b6b6bff',
+        color: 'var(--color-text-secondary)',
         fontfamily: 'Roboto',
     },
     cardTitle: {
         fontSize: 18,
         fontWeight: '600',
-        color: '#464545ff',
+        color: 'var(--color-text-primary)',
         fontfamily: 'Roboto',
 
     },
     icon: {
         fontSize: 60,
-        color: '#2670faff',
+        color: 'var(--color-primary)',
         paddingBottom: 1
     },
     cardfeedback: {
         fontSize: 15,
         fontWeight: '400',
-        color: '#6b6b6bff',
+        color: 'var(--color-text-secondary)',
         fontfamily: 'Roboto',
         flexGrow: 1,
         fontStyle: 'italic'
@@ -77,7 +84,7 @@ const styles = {
         height: 50,
         fontSize: 20,
         fontWeight: '600',
-        color: '#2670faff',
+        color: 'var(--color-primary)',
         fontfamily: 'Roboto',
     },
     avatarName: {
@@ -85,26 +92,32 @@ const styles = {
         marginLeft: 2,
         fontSize: 16,
         fontWeight: '500',
-        color: '#464545ff',
+        color: 'var(--color-text-primary)',
         fontfamily: 'Roboto',
     },
     avatarRol: {
         fontSize: 14,
         fontWeight: '400',
-        color: '#6b6b6bff',
+        color: 'var(--color-text-secondary)',
         fontfamily: 'Roboto',
     },
     input: {
-        bgcolor: '#53A3F1',
+        bgcolor: 'var(--color-secondary-light)',
         '& .MuiInputBase-input': {
-            color: 'white',
+            color: 'var(--color-white)',
         },
         '& .MuiInputLabel-root': {
-            color: 'white',
+            color: 'var(--color-white)',
         },
     }
 
 }
+
+export const metadata: Metadata = {
+    title: "Inicio",
+    description:
+        "Potenciamos tu negocio con soluciones de software a medida. Desarrollo web, automatización e integración de sistemas.",
+};
 
 export default function Homepage() {
     return (
@@ -129,7 +142,9 @@ export default function Homepage() {
                             </Button>
                         </Grid>
                         <Grid sx={styles.grid} size={5}>
-                            <Skeleton variant="rectangular" sx={styles.skeleton} />
+                            <Box sx={styles.img}>
+                                <img src="/home.png" alt="Hertzios" />
+                            </Box>
                         </Grid>
 
                     </Grid>
@@ -286,24 +301,23 @@ export default function Homepage() {
                 <Box sx={styles.container2}>
                     <Grid container spacing={2}
                         sx={{
-                            bgcolor: '#298CEE',
-                            border: '1px solid #21a3eeff',
+                            bgcolor: 'var(--color-secondary)',
+                            border: '1px solid var(--color-secondary)',
                             borderRadius: 2,
                             padding: 6,
                             display: 'flex', alignItems: 'center',
                         }}>
 
                         <Grid size={6} sx={{ height: '100%' }}>
-                            <Typography variant="h4"
+                            <Typography variant="h3"
                                 sx={{
                                     fontSize: 28,
                                     fontWeight: '500',
-                                    color: '#ffffffff',
-                                    fontfamily: 'Roboto',
+                                    color: 'var(--color-white)',
                                     padding: '4px 0px 4px 0px',
                                     width: '100%'
                                 }}>
-                                Listo para transformar tu negocio?
+                                ¿Listo para transformar tu negocio?
 
                                 <Typography sx={{ fontSize: 14, fontWeight: '400', color: '#d8d8d8ff', fontfamily: 'Roboto', paddingBottom: 3, width: '100%' }}>
                                     <br />
@@ -345,7 +359,7 @@ export default function Homepage() {
                                     variant="contained"
                                     color="primary"
                                     fullWidth
-                                    sx={{ bgcolor: '#ffffffff', color: '#298CEE' }}
+                                    sx={{ bgcolor: 'var(--color-white)', color: 'var(--color-secondary)' }}
                                 >
                                     Enviar mensaje
                                 </Button>

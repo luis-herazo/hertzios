@@ -15,6 +15,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Image from 'next/image';
 
 const styles = {
     button: {
@@ -64,7 +65,14 @@ export default function Menu(props: Props) {
     /*Version Movil*/
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" sx={{ my: 2 }}>
+            <Typography variant="h6" sx={{ my: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+                <Image
+                    src="/h-logo.png"
+                    alt="Hertzios Logo"
+                    width={30}
+                    height={30}
+                    style={{ objectFit: 'contain' }}
+                />
                 HERTZIOS
             </Typography>
             <Divider />
@@ -100,8 +108,15 @@ export default function Menu(props: Props) {
                         <Typography
                             variant="h6"
                             component="div"
-                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 1 }}
                         >
+                            <Image
+                                src="/h-logo.png"
+                                alt="Hertzios Logo"
+                                width={30}
+                                height={30}
+                                style={{ objectFit: 'contain' }}
+                            />
                             HERTZIOS
                         </Typography>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>

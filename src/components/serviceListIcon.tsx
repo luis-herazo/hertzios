@@ -12,7 +12,7 @@ export default function ServiceListIcon({ title }: ServiceListIconProps) {
         <div>
             <ListItem disablePadding>
                 <ListItemButton>
-                    <ListItemIcon sx={{ color: '#2670faff' }}>
+                    <ListItemIcon sx={{ color: 'var(--color-primary)' }}>
                         <CheckCircleOutlineIcon />
                     </ListItemIcon>
                     <ListItemText primary={title} />

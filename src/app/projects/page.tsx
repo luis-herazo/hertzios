@@ -1,121 +1,108 @@
-import { Box, Container, Grid, Card, CardContent, Typography, Button, CardActions, CardMedia } from "@mui/material";
+import type { Metadata } from "next";
+import { Box, Container, Grid, Card, CardContent, Typography, Button, Chip } from "@mui/material";
 import AppTitle from "../../components/appTitle";
 import DescriptionText from "@/components/descriptionText";
+import { projects } from "../../data/projects";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+export const metadata: Metadata = {
+    title: "Proyectos y Casos de Estudio | Hertzios",
+    description: "Explora nuestros casos de éxito y descubre cómo hemos ayudado a empresas a transformar sus negocios con tecnología.",
+};
 
 const styles = {
-    container1: {
+    container: {
         flexGrow: 1,
         paddingTop: 15,
-        paddingBottom: 5
-    },
-    container2: {
-        flexGrow: 1,
-        paddingTop: 15,
-        paddingBottom: 5,
-        alignItems: 'center'
+        paddingBottom: 10
     },
     card: {
-        width: '100%',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        transition: 'transform 0.2s ease-in-out',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShadow: '0 8px 16px rgba(0,0,0,0.1)'
+        }
     },
     cardContent: {
         flexGrow: 1,
-        fontSize: 16,
-        fontWeight: '400',
-        color: '#6b6b6bff',
-        fontfamily: 'Roboto',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2
     },
-    cardTitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        color: '#464545ff',
-        fontfamily: 'Roboto',
+    chip: {
+        marginRight: 1,
+        marginBottom: 1,
+        fontSize: '0.75rem'
     },
-    cardMedia: {
-        height: 200, // Fixed height for the image
+    button: {
+        marginTop: 'auto',
+        textTransform: 'none',
+        fontWeight: 600
     }
 };
-
-const title = "Nuestros Proyectos";
-const description = "Aquí puedes ver algunos de los proyectos en los que hemos trabajado. Nos enorgullecemos de entregar soluciones de alta calidad que cumplen con las expectativas de nuestros clientes.";
 
 export default function ProjectsPage() {
     return (
         <Container>
-            <Box sx={styles.container1}>
-                <Grid container spacing={2}>
-                    <Grid size={{ xs: 12 }} sx={{ textAlign: 'center' }}>
-                        <AppTitle Name={title} />
-                        <DescriptionText Name={description} />
-                    </Grid>
-                </Grid>
-            </Box>
+            <Box sx={styles.container}>
+                <Box sx={{ marginBottom: 8, textAlign: 'center' }}>
+                    <AppTitle Name="Nuestros Proyectos" />
+                    <DescriptionText Name="Descubre cómo hemos ayudado a empresas líderes a resolver desafíos complejos con tecnología innovadora." />
+                </Box>
 
-            <Box sx={styles.container2}>
                 <Grid container spacing={4}>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card sx={styles.card}>
-                            <CardMedia
-                                sx={styles.cardMedia}
-                                image="https://picsum.photos/300/200"
-                                title="InnovaTech Dashboard"
-                            />
-                            <CardContent>
-                                <Typography sx={styles.cardTitle} component="div">
-                                    InnovaTech Dashboard
-                                </Typography>
-                                <Typography sx={styles.cardContent}>
-                                    Desarrollamos un dashboard personalizado para InnovaTech que les permite monitorear sus operaciones en tiempo real. La solución integra datos de múltiples fuentes y los presenta de una manera clara y concisa.
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Ver Proyecto</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card sx={styles.card}>
-                            <CardMedia
-                                sx={styles.cardMedia}
-                                image="https://picsum.photos/300/200"
-                                title="Logística Global App"
-                            />
-                            <CardContent>
-                                <Typography sx={styles.cardTitle} component="div">
-                                    Logística Global App
-                                </Typography>
-                                <Typography sx={styles.cardContent}>
-                                    Creamos una aplicación móvil para Logística Global que optimiza la gestión de sus rutas de entrega. La aplicación ha ayudado a la empresa a reducir costos y mejorar la eficiencia de sus operaciones.
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Ver Proyecto</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card sx={styles.card}>
-                            <CardMedia
-                                sx={styles.cardMedia}
-                                image="https://picsum.photos/300/200"
-                                title="E-commerce para RetailCo"
-                            />
-                            <CardContent>
-                                <Typography sx={styles.cardTitle} component="div">
-                                    E-commerce para RetailCo
-                                </Typography>
-                                <Typography sx={styles.cardContent}>
-                                    Desarrollamos una plataforma de e-commerce completa para RetailCo, incluyendo un sistema de gestión de inventario y un procesador de pagos. La plataforma ha permitido a la empresa expandir su negocio en línea.
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Ver Proyecto</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
+                    {projects.map((project) => (
+                        <Grid item xs={12} md={6} key={project.id}>
+                            <Card sx={styles.card}>
+                                <CardContent sx={styles.cardContent}>
+                                    <Box>
+                                        <Typography variant="overline" color="primary" sx={{ fontWeight: 'bold' }}>
+                                            {project.industry}
+                                        </Typography>
+                                        <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', mb: 1 }}>
+                                            {project.title}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary" paragraph>
+                                            {project.description}
+                                        </Typography>
+                                    </Box>
+
+                                    <Box>
+                                        {project.technologies.slice(0, 4).map((tech) => (
+                                            <Chip
+                                                key={tech}
+                                                label={tech}
+                                                size="small"
+                                                variant="outlined"
+                                                sx={styles.chip}
+                                            />
+                                        ))}
+                                        {project.technologies.length > 4 && (
+                                            <Chip
+                                                label={`+${project.technologies.length - 4}`}
+                                                size="small"
+                                                variant="outlined"
+                                                sx={styles.chip}
+                                            />
+                                        )}
+                                    </Box>
+
+                                    <Button
+                                        variant="text"
+                                        color="primary"
+                                        endIcon={<ArrowForwardIcon />}
+                                        href={`/projects/${project.slug}`}
+                                        sx={styles.button}
+                                    >
+                                        Ver Caso de Estudio
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
                 </Grid>
             </Box>
         </Container>

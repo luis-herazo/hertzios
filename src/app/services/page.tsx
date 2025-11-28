@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Box, Container, Typography, Grid, Card, CardContent, List, CardActions, Button } from "@mui/material";
 
 import AppTitle from "../../components/appTitle";
@@ -40,25 +41,25 @@ const styles = {
         flexGrow: 1,
         fontSize: 14,
         fontWeight: '400',
-        color: '#6b6b6bff',
+        color: 'var(--color-text-secondary)',
         fontfamily: 'Roboto',
     },
     cardTitle: {
         fontSize: 18,
         fontWeight: '600',
-        color: '#464545ff',
+        color: 'var(--color-text-primary)',
         fontfamily: 'Roboto',
 
     },
     icon: {
         fontSize: 60,
-        color: '#2670faff',
+        color: 'var(--color-primary)',
         paddingBottom: 1
     },
     cardfeedback: {
         fontSize: 15,
         fontWeight: '400',
-        color: '#6b6b6bff',
+        color: 'var(--color-text-secondary)',
         fontfamily: 'Roboto',
         flexGrow: 1,
         fontStyle: 'italic'
@@ -69,7 +70,7 @@ const styles = {
         height: 50,
         fontSize: 20,
         fontWeight: '600',
-        color: '#2670faff',
+        color: 'var(--color-primary)',
         fontfamily: 'Roboto',
     },
     avatarName: {
@@ -77,23 +78,33 @@ const styles = {
         marginLeft: 2,
         fontSize: 16,
         fontWeight: '500',
-        color: '#464545ff',
+        color: 'var(--color-text-primary)',
         fontfamily: 'Roboto',
     },
     avatarRol: {
         fontSize: 14,
         fontWeight: '400',
-        color: '#6b6b6bff',
+        color: 'var(--color-text-secondary)',
         fontfamily: 'Roboto',
     },
     input: {
-        bgcolor: '#53A3F1',
+        bgcolor: 'var(--color-secondary-light)',
         '& .MuiInputBase-input': {
-            color: 'white',
+            color: 'var(--color-white)',
         },
         '& .MuiInputLabel-root': {
-            color: 'white',
+            color: 'var(--color-white)',
         },
+    },
+    ctaCard: {
+        padding: 6,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        textAlign: 'center',
     }
 
 }
@@ -101,6 +112,12 @@ const styles = {
 const title = "Nuestros Servicios";
 const subtitle = "En Hertzios nos enfocamos en brindarte soluciones innovadoras y personalizadas para optimizar tus procesos y mejorar la eficiencia de tu negocio.";
 
+
+export const metadata: Metadata = {
+    title: "Servicios",
+    description:
+        "Descubre nuestros servicios: Desarrollo Web/Móvil, Automatización de Procesos e Integración de Sistemas.",
+};
 
 export default function Services() {
     return (
@@ -190,8 +207,17 @@ export default function Services() {
                     </Grid>
                 </Box>
                 <Box>
-                    <AppTitle Name={title} ></AppTitle>
-                    <DescriptionText Name={subtitle} ></DescriptionText>
+                    <Container>
+                        <Box sx={styles.container1}>
+                            <Card sx={styles.ctaCard}>
+                                <CardContent>
+                                    <AppTitle Name="Construyamos juntos tu solución" ></AppTitle>
+                                    <DescriptionText Name={subtitle} ></DescriptionText>
+                                    <Button >Contáctanos</Button>
+                                </CardContent>
+                            </Card>
+                        </Box>
+                    </Container>
                 </Box>
             </Container>
         </>

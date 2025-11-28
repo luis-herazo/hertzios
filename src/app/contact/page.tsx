@@ -1,108 +1,232 @@
-import { Box, Container, Grid, TextField, Button, Typography } from "@mui/material";
-import AppTitle from "../../components/appTitle";
-import DescriptionText from "@/components/descriptionText";
+import type { Metadata } from "next";
+import { Box, Container, Grid, TextField, Button, Typography, Paper } from "@mui/material";
+import { Email, Phone, CalendarToday, LinkedIn, GitHub } from "@mui/icons-material";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "Contacto",
+    description:
+        "¿Listo para transformar tu negocio? Contáctanos hoy mismo y empecemos a trabajar en tu próxima solución digital.",
+};
 
 const styles = {
-    container1: {
-        flexGrow: 1,
+    pageContainer: {
         paddingTop: 15,
-        paddingBottom: 5
+        paddingBottom: 10,
     },
-    formContainer: {
+    sectionTitle: {
+        fontWeight: 700,
+        marginBottom: 1,
+        color: 'var(--foreground)',
+    },
+    sectionSubtitle: {
+        color: 'var(--color-text-secondary)',
+        marginBottom: 4,
+        maxWidth: '600px',
+    },
+    formCard: {
         padding: 4,
         borderRadius: 2,
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        backgroundColor: 'white',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+        backgroundColor: 'var(--background)',
+        border: '1px solid #eaeaea',
+    },
+    inputLabel: {
+        fontSize: 14,
+        fontWeight: 500,
+        marginBottom: 1,
+        display: 'block',
+        color: 'var(--foreground)',
     },
     input: {
-        '& .MuiInputBase-input': {
-            color: 'black',
+        marginBottom: 3,
+        '& .MuiOutlinedInput-root': {
+            backgroundColor: '#f9fafb',
+            '& fieldset': {
+                borderColor: '#e5e7eb',
+            },
+            '&:hover fieldset': {
+                borderColor: '#d1d5db',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: '#2563eb',
+            },
         },
-        '& .MuiInputLabel-root': {
-            color: 'gray',
+    },
+    submitButton: {
+        textTransform: 'none',
+        fontSize: 16,
+        fontWeight: 600,
+        padding: '12px',
+        boxShadow: 'none',
+        '&:hover': {
+            boxShadow: 'none',
+        },
+    },
+    infoItem: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        marginBottom: 3,
+        padding: 2,
+        borderRadius: 2,
+        backgroundColor: '#f3f4f6',
+    },
+    iconBox: {
+        backgroundColor: '#dbeafe',
+        padding: 1,
+        borderRadius: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 2,
+        color: '#2563eb',
+    },
+    socialIcon: {
+        fontSize: 28,
+        color: '#6b7280',
+        marginRight: 2,
+        cursor: 'pointer',
+        '&:hover': {
+            color: '#2563eb',
         },
     }
 };
 
-const title = "Contacto";
-const description = "Tienes alguna pregunta o quieres trabajar con nosotros? Completa el formulario y nos pondremos en contacto contigo lo antes posible.";
-
 export default function ContactPage() {
     return (
-        <Container>
-            <Box sx={styles.container1}>
-                <Grid container spacing={2} justifyContent="center">
-                    <Grid size={{ xs: 12 }} sx={{ textAlign: 'center' }}>
-                        <AppTitle Name={title} />
-                        <DescriptionText Name={description} />
-                    </Grid>
-                </Grid>
-            </Box>
+        <Container maxWidth="lg">
+            <Box sx={styles.pageContainer}>
+                <Box mb={6}>
+                    <Typography variant="h3" component="h1" sx={styles.sectionTitle}>
+                        ¿Listo para empezar tu proyecto?
+                    </Typography>
+                    <Typography variant="body1" sx={styles.sectionSubtitle}>
+                        Completa el formulario a continuación o utiliza uno de nuestros otros métodos de contacto.
+                    </Typography>
+                </Box>
 
-            {/* Contact Form Section (similar to home page) */}
-            <Box sx={{ ...styles.container1, paddingTop: 0 }}> {/* Adjust padding if needed */}
-                <Grid container spacing={2}
-                    sx={{
-                        bgcolor: '#298CEE',
-                        border: '1px solid #21a3eeff',
-                        borderRadius: 2,
-                        padding: 6,
-                        display: 'flex', alignItems: 'center',
-                    }}>
+                <Grid container spacing={6}>
+                    {/* Left Column: Contact Form */}
+                    <Grid item xs={12} md={7}>
+                        <Paper elevation={0} sx={styles.formCard}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} md={6}>
+                                    <Typography variant="caption" sx={styles.inputLabel}>Nombre</Typography>
+                                    <TextField
+                                        placeholder="Tu nombre completo"
+                                        variant="outlined"
+                                        fullWidth
+                                        sx={styles.input}
+                                        size="small"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <Typography variant="caption" sx={styles.inputLabel}>Correo Electrónico</Typography>
+                                    <TextField
+                                        placeholder="tu.email@ejemplo.com"
+                                        variant="outlined"
+                                        fullWidth
+                                        sx={styles.input}
+                                        size="small"
+                                    />
+                                </Grid>
+                            </Grid>
 
-                    <Grid size={{ xs: 12, md: 6 }} sx={{ height: '100%' }}>
-                        <Typography variant="h4"
-                            sx={{
-                                fontSize: 28,
-                                fontWeight: '500',
-                                color: '#ffffffff',
-                                fontfamily: 'Roboto',
-                                padding: '4px 0px 4px 0px',
-                                width: '100%'
-                            }}>
-                            ¿Listo para empezar tu proyecto?
-
-                            <Typography sx={{ fontSize: 14, fontWeight: '400', color: '#d8d8d8ff', fontfamily: 'Roboto', paddingBottom: 3, width: '100%' }}>
-                                <br />
-                                Completa el formulario y nuestro equipo se pondrá en contacto
-                                contigo lo antes posible para discutir cómo podemos ayudarte.
-                            </Typography>
-                        </Typography>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 6 }} sx={{ height: '100%' }}>
-                        <Box>
+                            <Typography variant="caption" sx={styles.inputLabel}>Asunto</Typography>
                             <TextField
-                                label="Tu nombre"
+                                placeholder="¿Sobre qué te gustaría hablar?"
                                 variant="outlined"
                                 fullWidth
-                                margin="normal"
                                 sx={styles.input}
+                                size="small"
                             />
+
+                            <Typography variant="caption" sx={styles.inputLabel}>Mensaje</Typography>
                             <TextField
-                                label="Tu email"
+                                placeholder="Describe tu proyecto o consulta aquí..."
                                 variant="outlined"
                                 fullWidth
-                                margin="normal"
-                                sx={styles.input}
-                            />
-                            <TextField
-                                label="Tu mensaje"
-                                variant="outlined"
-                                fullWidth
-                                margin="normal"
                                 multiline
-                                rows={4}
+                                rows={6}
                                 sx={styles.input}
                             />
+
                             <Button
-                                type="submit"
                                 variant="contained"
                                 color="primary"
                                 fullWidth
-                                sx={{ bgcolor: '#ffffffff', color: '#298CEE', marginTop: 2 }}
+                                sx={styles.submitButton}
                             >
-                                Enviar mensaje
+                                Enviar Mensaje
                             </Button>
+                        </Paper>
+                    </Grid>
+
+                    {/* Right Column: Contact Info */}
+                    <Grid item xs={12} md={5}>
+                        <Box pl={{ md: 4 }}>
+                            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'var(--foreground)' }}>
+                                Otras formas de contactar
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 4 }}>
+                                Si prefieres, puedes contactarnos directamente a través de estos canales.
+                            </Typography>
+
+                            <Box sx={styles.infoItem}>
+                                <Box sx={styles.iconBox}>
+                                    <Email fontSize="small" />
+                                </Box>
+                                <Box>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'var(--foreground)' }}>
+                                        Correo Electrónico
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        contacto@hertzios.com
+                                    </Typography>
+                                </Box>
+                            </Box>
+
+                            <Box sx={styles.infoItem}>
+                                <Box sx={styles.iconBox}>
+                                    <Phone fontSize="small" />
+                                </Box>
+                                <Box>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'var(--foreground)' }}>
+                                        Teléfono
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        +58 424 159 9502
+                                    </Typography>
+                                </Box>
+                            </Box>
+
+                            <Box sx={styles.infoItem}>
+                                <Box sx={styles.iconBox}>
+                                    <CalendarToday fontSize="small" />
+                                </Box>
+                                <Box>
+                                    <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'var(--foreground)' }}>
+                                        Agendar una reunión
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Reserva un espacio en nuestro Calendly
+                                    </Typography>
+                                </Box>
+                            </Box>
+
+                            <Box mt={6}>
+                                <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'var(--foreground)' }}>
+                                    Síguenos
+                                </Typography>
+                                <Box display="flex">
+                                    <Link href="#" passHref>
+                                        <LinkedIn sx={styles.socialIcon} />
+                                    </Link>
+                                    <Link href="#" passHref>
+                                        <GitHub sx={styles.socialIcon} />
+                                    </Link>
+                                </Box>
+                            </Box>
                         </Box>
                     </Grid>
                 </Grid>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Box, Container, Grid, Card, CardContent, Typography, Button, CardActions } from "@mui/material";
 import AppTitle from "../../components/appTitle";
 import DescriptionText from "@/components/descriptionText";
@@ -59,6 +60,12 @@ const blogPosts = [
         excerpt: "Una gran experiencia de usuario es lo que diferencia a una aplicación exitosa de una que no lo es. Aprende por qué la UX es tan importante y cómo puedes asegurarte de que tu aplicación sea intuitiva, atractiva y fácil de usar para tus usuarios."
     }
 ];
+
+export const metadata: Metadata = {
+    title: "Blog",
+    description:
+        "Artículos sobre tecnología, desarrollo de software, automatización y tendencias digitales.",
+};
 
 export default function BlogPage() {
     return (

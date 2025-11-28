@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import AppTitle from "../../components/appTitle";
 import SubTitle from "../../components/subTitle";
@@ -36,6 +37,12 @@ const styles = {
 
 const title = "Sobre Nosotros";
 const description = "Somos un equipo de apasionados por la tecnología, dedicados a crear soluciones de software que impulsen el crecimiento de nuestros clientes.";
+
+export const metadata: Metadata = {
+    title: "Sobre Nosotros",
+    description:
+        "Conoce al equipo detrás de Hertzios. Apasionados por la tecnología y dedicados a impulsar el crecimiento de tu negocio.",
+};
 
 export default function AboutPage() {
     return (

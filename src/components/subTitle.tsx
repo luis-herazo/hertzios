@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 const styles = {
     fontSize: 28,
     fontWeight: '600',
-    color: '#222222ff',
+    color: 'var(--color-foreground)',
     fontfamily: 'Roboto',
     paddingBottom: 3
 }
