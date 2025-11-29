@@ -132,7 +132,7 @@ export default function BudgetPage() {
                                             "Integración de Sistemas",
                                             "Otro"
                                         ].map((service) => (
-                                            <Grid item xs={12} sm={6} key={service}>
+                                            <Grid size={{ xs: 12, md: 6 }} key={service}>
                                                 <Box sx={styles.radioCard}>
                                                     <FormControlLabel
                                                         value={service}
@@ -187,7 +187,7 @@ export default function BudgetPage() {
                         <Box mb={4}>
                             <Typography sx={styles.stepTitle}>4. Datos de Contacto</Typography>
                             <Grid container spacing={3}>
-                                <Grid item xs={12} sm={6}>
+                                <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="caption" display="block" mb={1} color="text.secondary">
                                         Nombre completo
                                     </Typography>
@@ -199,7 +199,7 @@ export default function BudgetPage() {
                                         size="small"
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
+                                <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="caption" display="block" mb={1} color="text.secondary">
                                         Correo electrónico
                                     </Typography>
@@ -232,7 +232,7 @@ export default function BudgetPage() {
 
                 {/* Bottom Section: FAQ & Testimonial */}
                 <Grid container spacing={6}>
-                    <Grid item xs={12} md={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6" fontWeight={700} mb={3}>
                             Preguntas Frecuentes
                         </Typography>
@@ -260,7 +260,7 @@ export default function BudgetPage() {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} md={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6" fontWeight={700} mb={3}>
                             Confían en Nosotros
                         </Typography>

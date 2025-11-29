@@ -107,10 +107,10 @@ export default function ContactPage() {
 
                 <Grid container spacing={6}>
                     {/* Left Column: Contact Form */}
-                    <Grid item xs={12} md={7}>
+                    <Grid size={{ xs: 12, md: 7 }}>
                         <Paper elevation={0} sx={styles.formCard}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} md={6}>
+                                <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="caption" sx={styles.inputLabel}>Nombre</Typography>
                                     <TextField
                                         placeholder="Tu nombre completo"
@@ -120,7 +120,7 @@ export default function ContactPage() {
                                         size="small"
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={6}>
+                                <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="caption" sx={styles.inputLabel}>Correo Electrónico</Typography>
                                     <TextField
                                         placeholder="tu.email@ejemplo.com"
@@ -163,7 +163,7 @@ export default function ContactPage() {
                     </Grid>
 
                     {/* Right Column: Contact Info */}
-                    <Grid item xs={12} md={5}>
+                    <Grid size={{ xs: 12, md: 5 }}>
                         <Box pl={{ md: 4 }}>
                             <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'var(--foreground)' }}>
                                 Otras formas de contactar
