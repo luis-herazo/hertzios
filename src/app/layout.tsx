@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Box, Toolbar } from "@mui/material";
 import Menu from "./menu";
 import Footer from "./footer";
 
@@ -59,16 +58,13 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans text-foreground`}
       >
         <Menu />
-        <Box component="main" sx={{ p: 3 }}>
-          {<Toolbar />}
+        <main className="container mx-auto p-4 pt-20">
           {children}
-
-        </Box>
+        </main>
         <Footer />
-
       </body>
     </html>
   );

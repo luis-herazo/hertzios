@@ -1,23 +1,13 @@
-import { Typography } from "@mui/material";
-
-
-const styles = {
-    color: 'var(--color-foreground)',
-    fontSize: 48,
-    fontfamily: 'Roboto',
-    fontWeight: '600',
-    paddingBottom: 3
-
-}
+"use client";
 
 interface Props {
     Name: string
 }
 
 export default function AppTitle(props: Props) {
-    return <>
-        <Typography variant="h1" sx={styles}>
+    return (
+        <h1 className="text-4xl md:text-5xl font-bold pb-6 tracking-tight text-foreground">
             {props.Name}
-        </Typography>
-    </>
+        </h1>
+    )
 }

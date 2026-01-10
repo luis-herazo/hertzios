@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram, LinkedIn, Twitter, Email, Phone, LocationOn } from '@mui/icons-material';
+import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -57,15 +57,15 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold text-white">Contacto</h3>
                         <ul className="space-y-3">
                             <li className="flex items-start space-x-3">
-                                <Email className="text-blue-500 mt-0.5" fontSize="small" />
+                                <Mail className="text-blue-500 mt-0.5 w-5 h-5" />
                                 <span className="text-sm">contacto@hertzios.com</span>
                             </li>
                             <li className="flex items-start space-x-3">
-                                <Phone className="text-blue-500 mt-0.5" fontSize="small" />
+                                <Phone className="text-blue-500 mt-0.5 w-5 h-5" />
                                 <span className="text-sm">+58 424 159 9502</span>
                             </li>
                             <li className="flex items-start space-x-3">
-                                <LocationOn className="text-blue-500 mt-0.5" fontSize="small" />
+                                <MapPin className="text-blue-500 mt-0.5 w-5 h-5" />
                                 <span className="text-sm">Caracas - Venezuela</span>
                             </li>
                         </ul>
@@ -79,16 +79,16 @@ const Footer = () => {
                         </p>
                         <div className="flex space-x-4">
                             <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
-                                <Facebook fontSize="small" />
+                                <Facebook className="w-5 h-5" />
                             </a>
                             <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300">
-                                <Instagram fontSize="small" />
+                                <Instagram className="w-5 h-5" />
                             </a>
                             <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-400 hover:text-white transition-all duration-300">
-                                <Twitter fontSize="small" />
+                                <Twitter className="w-5 h-5" />
                             </a>
                             <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300">
-                                <LinkedIn fontSize="small" />
+                                <Linkedin className="w-5 h-5" />
                             </a>
                         </div>
                     </div>

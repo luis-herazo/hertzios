@@ -1,22 +1,13 @@
-import { Typography } from "@mui/material";
-
-
-const styles = {
-    fontSize: 16,
-    fontWeight: '500',
-    color: 'var(--color-text-primary)',
-    fontfamily: 'Roboto',
-    paddingBottom: 3
-}
+"use client";
 
 interface Props {
     Name: string
 }
 
 export default function DescriptionText(props: Props) {
-    return <>
-        <Typography variant="h4" sx={styles}>
+    return (
+        <p className="text-lg font-medium text-muted-foreground pb-6">
             {props.Name}
-        </Typography>
-    </>
+        </p>
+    )
 }
