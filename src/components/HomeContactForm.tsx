@@ -70,7 +70,7 @@ export default function HomeContactForm() {
             <Button
                 type="submit"
                 disabled={isPending}
-                className="w-full bg-white text-secondary hover:bg-white/90"
+                className="w-full text-white hover:bg-primary/80"
             >
                 {isPending ? "Enviando..." : "Enviar mensaje"}
             </Button>
