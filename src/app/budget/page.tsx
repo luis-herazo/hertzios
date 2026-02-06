@@ -1,3 +1,5 @@
+"use client";
+
 import type { Metadata } from "next";
 import {
     Box,
@@ -11,7 +13,6 @@ import {
     RadioGroup,
     FormControlLabel,
     FormControl,
-    Select,
     MenuItem,
     Accordion,
     AccordionSummary,
@@ -20,11 +21,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export const metadata: Metadata = {
-    title: "Presupuesto",
-    description:
-        "Solicita un presupuesto personalizado para tu proyecto de software, automatización o integración.",
-};
+
 
 const styles = {
     pageContainer: {
@@ -170,17 +167,18 @@ export default function BudgetPage() {
                             <Typography variant="caption" display="block" mb={1} color="text.secondary">
                                 Presupuesto estimado (USD)
                             </Typography>
-                            <Select
+                            <TextField
+                                select
                                 fullWidth
-                                displayEmpty
                                 defaultValue=""
-                                sx={{ ...styles.input, '& .MuiSelect-select': { py: 1.5 } }}
+                                variant="outlined"
+                                sx={styles.input}
                             >
-                                <MenuItem value="" disabled>Menos de $1,000</MenuItem>
+                                <MenuItem value="">Menos de $1,000</MenuItem>
                                 <MenuItem value="1000-5000">$1,000 - $5,000</MenuItem>
                                 <MenuItem value="5000-10000">$5,000 - $10,000</MenuItem>
                                 <MenuItem value="10000+">Más de $10,000</MenuItem>
-                            </Select>
+                            </TextField>
                         </Box>
 
                         {/* Step 4: Contact Info */}
@@ -266,7 +264,7 @@ export default function BudgetPage() {
                         </Typography>
                         <Paper elevation={0} sx={styles.testimonialCard}>
                             <Typography variant="body1" fontStyle="italic" mb={3} color="text.secondary">
-                                "El equipo de Hertzios transformó por completo nuestra eficiencia operativa con una automatización a medida. ¡Profesionales, rápidos y muy recomendables!"
+                                El equipo de Hertzios transformó por completo nuestra eficiencia operativa con una automatización a medida. ¡Profesionales, rápidos y muy recomendables!
                             </Typography>
                             <Box display="flex" alignItems="center">
                                 <Avatar src="/avatar-ana.jpg" sx={{ width: 48, height: 48, mr: 2 }}>AG</Avatar>
