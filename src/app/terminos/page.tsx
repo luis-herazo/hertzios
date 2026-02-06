@@ -40,7 +40,7 @@ export default function Terminos() {
 
                 <h2 className="text-xl font-semibold mt-6 mb-2">4. Contenido del Usuario</h2>
                 <p>
-                    En estos Términos y Condiciones, "Tu Contenido" significará cualquier audio, video, texto, imágenes u otro material que elijas mostrar en este sitio web. Al mostrar Tu Contenido, otorgas a Hertzios una licencia no exclusiva, mundial, irrevocable y sublicenciable para usar, reproducir, adaptar, publicar, traducir y distribuirlo en cualquier medio.
+                    En estos Términos y Condiciones, Tu Contenido significará cualquier audio, video, texto, imágenes u otro material que elijas mostrar en este sitio web. Al mostrar Tu Contenido, otorgas a Hertzios una licencia no exclusiva, mundial, irrevocable y sublicenciable para usar, reproducir, adaptar, publicar, traducir y distribuirlo en cualquier medio.
                 </p>
 
                 <h2 className="text-xl font-semibold mt-6 mb-2">5. Variación de Términos</h2>

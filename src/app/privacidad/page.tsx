@@ -41,7 +41,7 @@ export default function Privacidad() {
 
                 <h2 className="text-xl font-semibold mt-6 mb-2">4. Cookies y Web Beacons</h2>
                 <p>
-                    Como cualquier otro sitio web, Hertzios utiliza 'cookies'. Estas cookies se utilizan para almacenar información, incluidas las preferencias de los visitantes y las páginas del sitio web a las que el visitante accedió o visitó. La información se utiliza para optimizar la experiencia de los usuarios personalizando el contenido de nuestra página web según el tipo de navegador de los visitantes y/u otra información.
+                    Como cualquier otro sitio web, Hertzios utiliza cookies. Estas cookies se utilizan para almacenar información, incluidas las preferencias de los visitantes y las páginas del sitio web a las que el visitante accedió o visitó. La información se utiliza para optimizar la experiencia de los usuarios personalizando el contenido de nuestra página web según el tipo de navegador de los visitantes y/u otra información.
                 </p>
 
                 <h2 className="text-xl font-semibold mt-6 mb-2">5. Políticas de privacidad de terceros</h2>
