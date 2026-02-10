@@ -78,16 +78,16 @@ const Footer = () => {
                             Mantente conectado con nosotros en nuestras redes sociales.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
+                            <a href="https://www.facebook.com/profile.php?id=61587288105097" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
                                 <Facebook className="w-5 h-5" />
                             </a>
-                            <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300">
+                            <a href="https://www.instagram.com/hertzios/" className="bg-neutral-800 p-2 rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300">
                                 <Instagram className="w-5 h-5" />
                             </a>
-                            <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-400 hover:text-white transition-all duration-300">
+                            <a href="https://twitter.com/Hertzios1" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-400 hover:text-white transition-all duration-300">
                                 <Twitter className="w-5 h-5" />
                             </a>
-                            <a href="#" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300">
+                            <a href="https://www.linkedin.com/in/hertzios/" className="bg-neutral-800 p-2 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300">
                                 <Linkedin className="w-5 h-5" />
                             </a>
                         </div>
