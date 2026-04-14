@@ -19,17 +19,17 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
 
     try {
         const transporter = nodemailer.createTransport({
-            host: process.env.MAILRELAY_HOST,
-            port: Number(process.env.MAILRELAY_PORT),
+            host: process.env.SMTP_HOST,
+            port: Number(process.env.SMTP_PORT),
             secure: false, // true for 465, false for other ports
             auth: {
-                user: process.env.MAILRELAY_USER,
-                pass: process.env.MAILRELAY_PASS,
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
             },
         });
 
         const mailOptions = {
-            from: process.env.MAILRELAY_FROM_EMAIL || `"Hertzios Contacto" <${process.env.MAILRELAY_USER}>`,
+            from: process.env.SMTP_FROM_EMAIL || `"Hertzios Contacto" <${process.env.SMTP_USER}>`,
             to: process.env.EMAIL_TO,
             subject: subject,
             text: `
