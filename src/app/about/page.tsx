@@ -79,12 +79,12 @@ export default function AboutPage() {
                         <SubTitle Name="Nuestro Equipo" />
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Typography sx={styles.cardTitle}>Ana García</Typography>
+                        <Typography sx={styles.cardTitle}>Luis Herazo</Typography>
                         <Typography sx={styles.cardContent}>CEO & Founder</Typography>
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                         <Typography sx={styles.cardTitle}>Carlos Rodríguez</Typography>
-                        <Typography sx={styles.cardContent}>Lead Developer</Typography>
+                        <Typography sx={styles.cardContent}>Developer</Typography>
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                         <Typography sx={styles.cardTitle}>Laura Martinez</Typography>

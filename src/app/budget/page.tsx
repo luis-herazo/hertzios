@@ -17,9 +17,12 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
-    Avatar
+    Avatar,
+    Alert
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import * as React from 'react';
+import { sendBudget } from "@/actions/email";
 
 
 
@@ -104,6 +107,19 @@ const styles = {
 };
 
 export default function BudgetPage() {
+    const [state, action, isPending] = React.useActionState(sendBudget, {
+        success: false,
+        message: "",
+    });
+
+    const formRef = React.useRef<HTMLFormElement>(null);
+
+    React.useEffect(() => {
+        if (state.success && formRef.current) {
+            formRef.current.reset();
+        }
+    }, [state.success]);
+
     return (
         <Container maxWidth="md">
             <Box sx={styles.pageContainer}>
@@ -116,12 +132,21 @@ export default function BudgetPage() {
                 </Typography>
 
                 <Paper elevation={0} sx={styles.formCard}>
-                    <form noValidate autoComplete="off">
+                    {state.message && (
+                        <Alert 
+                            severity={state.success ? "success" : "error"} 
+                            sx={{ mb: 4, borderRadius: 2 }}
+                        >
+                            {state.message}
+                        </Alert>
+                    )}
+
+                    <form action={action} ref={formRef}>
                         {/* Step 1: Service Selection */}
                         <Box mb={6}>
                             <Typography sx={styles.stepTitle}>1. Elige el tipo de servicio</Typography>
-                            <FormControl component="fieldset" fullWidth>
-                                <RadioGroup row name="service">
+                            <FormControl component="fieldset" fullWidth required>
+                                <RadioGroup row name="service" defaultValue="Desarrollo Web">
                                     <Grid container spacing={2}>
                                         {[
                                             "Desarrollo Web",
@@ -149,9 +174,11 @@ export default function BudgetPage() {
                         <Box mb={6}>
                             <Typography sx={styles.stepTitle}>2. Cuéntanos sobre tu proyecto</Typography>
                             <Typography variant="caption" display="block" mb={1} color="text.secondary">
-                                Descripción detallada
+                                Descripción detallada *
                             </Typography>
                             <TextField
+                                name="description"
+                                required
                                 placeholder="Describe los objetivos, funcionalidades clave y cualquier detalle relevante de tu proyecto..."
                                 variant="outlined"
                                 fullWidth
@@ -169,12 +196,13 @@ export default function BudgetPage() {
                             </Typography>
                             <TextField
                                 select
+                                name="budget"
                                 fullWidth
-                                defaultValue=""
+                                defaultValue="1000-5000"
                                 variant="outlined"
                                 sx={styles.input}
                             >
-                                <MenuItem value="">Menos de $1,000</MenuItem>
+                                <MenuItem value="<1000">Menos de $1,000</MenuItem>
                                 <MenuItem value="1000-5000">$1,000 - $5,000</MenuItem>
                                 <MenuItem value="5000-10000">$5,000 - $10,000</MenuItem>
                                 <MenuItem value="10000+">Más de $10,000</MenuItem>
@@ -187,9 +215,11 @@ export default function BudgetPage() {
                             <Grid container spacing={3}>
                                 <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="caption" display="block" mb={1} color="text.secondary">
-                                        Nombre completo
+                                        Nombre completo *
                                     </Typography>
                                     <TextField
+                                        name="name"
+                                        required
                                         placeholder="Tu nombre"
                                         variant="outlined"
                                         fullWidth
@@ -199,9 +229,12 @@ export default function BudgetPage() {
                                 </Grid>
                                 <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="caption" display="block" mb={1} color="text.secondary">
-                                        Correo electrónico
+                                        Correo electrónico *
                                     </Typography>
                                     <TextField
+                                        name="email"
+                                        type="email"
+                                        required
                                         placeholder="tu@email.com"
                                         variant="outlined"
                                         fullWidth
@@ -214,12 +247,14 @@ export default function BudgetPage() {
 
                         <Box textAlign="center">
                             <Button
+                                type="submit"
                                 variant="contained"
                                 color="primary"
                                 size="large"
+                                disabled={isPending}
                                 sx={styles.submitButton}
                             >
-                                Enviar Solicitud
+                                {isPending ? "Enviando..." : "Enviar Solicitud"}
                             </Button>
                             <Typography variant="caption" display="block" mt={2} color="text.secondary">
                                 Al enviar, aceptas nuestra <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>Política de Privacidad</span>.
@@ -227,6 +262,7 @@ export default function BudgetPage() {
                         </Box>
                     </form>
                 </Paper>
+
 
                 {/* Bottom Section: FAQ & Testimonial */}
                 <Grid container spacing={6}>
