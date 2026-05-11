@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu as MenuIcon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
     Sheet,
     SheetContent,
@@ -54,6 +55,7 @@ export default function Menu() {
                             </Link>
                         ))}
                     </nav>
+                    <ThemeToggle />
                 </div>
 
                 {/* Mobile Menu */}
@@ -68,6 +70,9 @@ export default function Menu() {
                                 <span className="sr-only">Toggle Menu</span>
                             </Button>
                         </SheetTrigger>
+                        <div className="flex items-center space-x-2 mr-2">
+                            <ThemeToggle />
+                        </div>
                         <SheetContent side="left" className="pr-0">
                             <SheetTitle>
                                 <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>

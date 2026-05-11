@@ -28,8 +28,11 @@ export async function sendEmail(prevState: EmailState, formData: FormData): Prom
             },
         });
 
+        const fromName = process.env.EMAIL_FROM_NAME || "Hertzios";
+        const fromEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
+
         const mailOptions = {
-            from: process.env.SMTP_FROM_EMAIL || `"Hertzios Contacto" <${process.env.SMTP_USER}>`,
+            from: `"${fromName}" <${fromEmail}>`,
             to: process.env.EMAIL_TO,
             subject: subject,
             text: `

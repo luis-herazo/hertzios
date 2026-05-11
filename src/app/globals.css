@@ -140,3 +140,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  z-index: -1;
+}
