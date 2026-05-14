@@ -1,106 +1,82 @@
 import type { Metadata } from "next";
-import { Box, Container, Grid, Card, CardContent, Typography, Button, CardActions } from "@mui/material";
-import AppTitle from "../../components/appTitle";
+import Link from "next/link";
+import Image from "next/image";
+import { getBlogPosts } from "@/actions/blog";
+import AppTitle from "@/components/appTitle";
 import DescriptionText from "@/components/descriptionText";
 
-const styles = {
-    container1: {
-        flexGrow: 1,
-        paddingTop: 15,
-        paddingBottom: 5
-    },
-    card: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        marginBottom: 4,
-    },
-    cardContent: {
-        flexGrow: 1,
-        fontSize: 16,
-        fontWeight: '400',
-        color: '#6b6b6bff',
-        fontfamily: 'Roboto',
-    },
-    cardTitle: {
-        fontSize: 22,
-        fontWeight: '600',
-        color: '#464545ff',
-        fontfamily: 'Roboto',
-    },
-    postMeta: {
-        fontSize: 14,
-        color: '#9e9e9e',
-        marginBottom: 2,
-    }
-};
-
-const title = "Nuestro Blog";
-const description = "Lee nuestros últimos artículos sobre tecnología, desarrollo de software y tendencias de la industria.";
-
-const blogPosts = [
-    {
-        title: "5 formas en que la automatización puede transformar tu negocio",
-        date: "21 de Noviembre, 2025",
-        author: "Ana García",
-        excerpt: "La automatización de procesos ya no es una opción, es una necesidad. Descubre cómo la implementación de soluciones de automatización puede optimizar tus operaciones, reducir costos y liberar a tu equipo para que se concentre en tareas de mayor valor."
-    },
-    {
-        title: "Cómo elegir la tecnología adecuada para tu próximo proyecto de software",
-        date: "15 de Noviembre, 2025",
-        author: "Carlos Rodríguez",
-        excerpt: "La elección de la pila de tecnología correcta es crucial para el éxito de cualquier proyecto de software. En este artículo, exploramos los factores clave que debes considerar al tomar esta importante decisión, desde la escalabilidad y el rendimiento hasta la disponibilidad de talento."
-    },
-    {
-        title: "La importancia de la experiencia de usuario (UX) en el desarrollo de aplicaciones",
-        date: "8 de Noviembre, 2025",
-        author: "Laura Martinez",
-        excerpt: "Una gran experiencia de usuario es lo que diferencia a una aplicación exitosa de una que no lo es. Aprende por qué la UX es tan importante y cómo puedes asegurarte de que tu aplicación sea intuitiva, atractiva y fácil de usar para tus usuarios."
-    }
-];
-
 export const metadata: Metadata = {
-    title: "Blog",
-    description:
-        "Artículos sobre tecnología, desarrollo de software, automatización y tendencias digitales.",
+  title: "Blog | Hertzios",
+  description: "Artículos sobre tecnología, desarrollo de software, automatización y tendencias digitales.",
 };
 
-export default function BlogPage() {
-    return (
-        <Container>
-            <Box sx={styles.container1}>
-                <Grid container spacing={2} justifyContent="center">
-                    <Grid size={{ xs: 12 }} sx={{ textAlign: 'center' }}>
-                        <AppTitle Name={title} />
-                        <DescriptionText Name={description} />
-                    </Grid>
-                </Grid>
-            </Box>
+export default async function BlogPage() {
+  const blogPosts = await getBlogPosts();
+  const title = "Nuestro Blog";
+  const description = "Explora las últimas tendencias en tecnología, automatización y diseño digital para potenciar tu negocio.";
 
-            <Grid container spacing={4} justifyContent="center">
-                {blogPosts.map((post, index) => (
-                    <Grid size={{ xs: 12, md: 10 }} key={index}>
-                        <Card sx={styles.card}>
-                            <CardContent>
-                                <Typography sx={styles.cardTitle} component="h2">
-                                    {post.title}
-                                </Typography>
-                                <Typography sx={styles.postMeta}>
-                                    Publicado el {post.date} por {post.author}
-                                </Typography>
-                                <Typography sx={styles.cardContent}>
-                                    {post.excerpt}
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Leer más</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
-        </Container>
-    );
+  return (
+    <div className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <AppTitle Name={title} />
+          <div className="max-w-2xl mx-auto mt-4">
+            <DescriptionText Name={description} />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post, index) => (
+            <Link 
+              href={`/blog/${post.slug}`} 
+              key={post.id}
+              className="group relative flex flex-col bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
+              <div className="relative aspect-video overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {post.image ? (
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                    <span className="text-primary font-bold text-xl">Hertzios</span>
+                  </div>
+                )}
+                <div className="absolute top-4 left-4 z-20">
+                  <span className="px-3 py-1 bg-primary/90 text-white text-xs font-semibold rounded-full backdrop-blur-md">
+                    {post.category}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex-1 p-6 flex flex-col">
+                <div className="flex items-center text-xs text-muted-foreground mb-3 space-x-2">
+                  <span>{post.date}</span>
+                  <span>•</span>
+                  <span>{post.author}</span>
+                </div>
+                <h2 className="text-xl font-bold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                  {post.title}
+                </h2>
+                <p className="text-muted-foreground text-sm line-clamp-3 mb-6 flex-1">
+                  {post.excerpt}
+                </p>
+                <div className="flex items-center text-primary text-sm font-semibold group-hover:translate-x-1 transition-transform duration-300">
+                  Leer más
+                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -3,9 +3,10 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu as MenuIcon } from 'lucide-react';
+import { Menu as MenuIcon, UserCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createClient } from '@/utils/supabase/client';
 import {
     Sheet,
     SheetContent,
@@ -17,6 +18,7 @@ const navItems = {
     "Inicio": "/",
     "Servicios": "/services",
     "Proyectos": "/projects",
+    "Blog": "/blog",
     "Nosotros": "/about",
     "Contacto": "/contact",
     "Presupuesto": "/budget"
@@ -24,6 +26,32 @@ const navItems = {
 
 export default function Menu() {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [loginHref, setLoginHref] = React.useState('/login');
+
+    React.useEffect(() => {
+        async function checkSession() {
+            const supabase = createClient();
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                setLoginHref('/dashboard');
+            } else {
+                setLoginHref('/login');
+            }
+        }
+        checkSession();
+        
+        // Listen for auth state changes
+        const supabase = createClient();
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+            if (session) {
+                setLoginHref('/dashboard');
+            } else {
+                setLoginHref('/login');
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
 
     return (
         <header className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -55,7 +83,12 @@ export default function Menu() {
                             </Link>
                         ))}
                     </nav>
-                    <ThemeToggle />
+                    <div className="flex items-center space-x-2 pl-4 border-l border-border/50">
+                        <Link href={loginHref} className="text-foreground/60 hover:text-foreground transition-colors p-2 rounded-full hover:bg-muted">
+                            <UserCircle className="w-5 h-5" />
+                        </Link>
+                        <ThemeToggle />
+                    </div>
                 </div>
 
                 {/* Mobile Menu */}
@@ -71,6 +104,9 @@ export default function Menu() {
                             </Button>
                         </SheetTrigger>
                         <div className="flex items-center space-x-2 mr-2">
+                            <Link href={loginHref} className="text-foreground/60 hover:text-foreground transition-colors p-2 rounded-full hover:bg-muted">
+                                <UserCircle className="w-5 h-5" />
+                            </Link>
                             <ThemeToggle />
                         </div>
                         <SheetContent side="left" className="pr-0">
