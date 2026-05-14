@@ -76,9 +76,9 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
-        <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
+        <div className="prose prose-lg prose-slate dark:prose-invert max-w-none overflow-hidden">
           <div 
-            className="text-foreground/90 leading-relaxed space-y-6"
+            className="text-foreground/90 leading-relaxed space-y-6 break-words"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
