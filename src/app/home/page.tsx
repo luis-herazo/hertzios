@@ -5,10 +5,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AppTitle from "../../components/appTitle";
 import SubTitle from "../../components/subTitle";
 import DescriptionText from "@/components/descriptionText";
-import { Code, Bot, Cable, Lightbulb, Palette, Rocket } from 'lucide-react';
+import { Code, Bot, Cable, Lightbulb, Palette, Rocket, Brain, Sparkles, Zap, RefreshCw, ShieldCheck, BarChart3, Users } from 'lucide-react';
 import HomeContactForm from "@/components/HomeContactForm";
 import Link from "next/link";
 import Image from "next/image";
+import ScrollReveal from "@/components/ScrollReveal";
+import StatsCounter from "@/components/StatsCounter";
+import TechStack from "@/components/TechStack";
 
 const title = 'Potenciamos tu negocio con soluciones de software a medida'
 const description = 'Ahorra tiempo, optimiza procesos y escala tus operaciones con nuestras automatizaciones e integraciones.'
@@ -25,6 +28,7 @@ export default function Homepage() {
         <div className="space-y-16 pb-10">
             {/* Section 1  Hero Section*/}
             <section className="py-10 md:py-20">
+                <ScrollReveal direction="up">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                     <div className="md:col-span-7 space-y-4">
                         <AppTitle Name={title} />
@@ -56,14 +60,16 @@ export default function Homepage() {
                         </div>
                     </div>
                 </div>
+                </ScrollReveal>
             </section>
 
             {/* Section 2  Nuestras Soluciones*/}
             <section>
+                <ScrollReveal direction="up" delay={0.2}>
                 <div className="text-center mb-10">
                     <SubTitle Name={subtitle} />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <Card className="border-border/40 shadow-sm hover:shadow-md transition-shadow">
                         <CardContent className="pt-6">
                             <Code className="h-12 w-12 text-primary mb-4" />
@@ -91,11 +97,22 @@ export default function Homepage() {
                             </p>
                         </CardContent>
                     </Card>
+                    <Card className="border-border/40 shadow-sm hover:shadow-md transition-shadow">
+                        <CardContent className="pt-6">
+                            <Brain className="h-12 w-12 text-primary mb-4" />
+                            <h3 className="text-xl font-semibold mb-2">Integraciones con IA</h3>
+                            <p className="text-muted-foreground">
+                                Implementamos modelos avanzados y configuraciones de Inteligencia Artificial para potenciar tus operaciones.
+                            </p>
+                        </CardContent>
+                    </Card>
                 </div>
+                </ScrollReveal>
             </section>
 
             {/* Section 3 Como trabajamos*/}
             <section>
+                <ScrollReveal direction="up" delay={0.2}>
                 <div className="text-center max-w-3xl mx-auto mb-12">
                     <SubTitle Name={'Cómo trabajamos'} />
                     <DescriptionText Name={'Nuestro proceso esta diseñado para que sea transparente, colaborativo y centrado en tus resultados. Te acompañamos en cada paso del camino.'} />
@@ -123,10 +140,114 @@ export default function Homepage() {
                         </p>
                     </div>
                 </div>
+                </ScrollReveal>
             </section>
 
-            {/* Section 4 Nuestros clientes*/}
+            {/* Section 4 — Por qué elegirnos */}
             <section>
+                <ScrollReveal direction="up">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <SubTitle Name={'Por qué elegirnos'} />
+                    <DescriptionText Name={'Combinamos inteligencia artificial, metodologías ágiles y tecnologías de vanguardia para entregar soluciones que realmente transforman tu negocio.'} />
+                </div>
+
+                {/* AI highlight card */}
+                <div className="mb-6 rounded-2xl p-8 bg-gradient-to-r from-[var(--color-primary)]/10 via-[var(--color-secondary)]/10 to-[var(--color-primary)]/5 border border-[var(--color-primary)]/20 flex flex-col md:flex-row items-center gap-6">
+                    <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] shadow-lg">
+                        <Sparkles className="h-10 w-10 text-white" />
+                    </div>
+                    <div>
+                        <h3 className="text-2xl font-bold mb-2 text-foreground">Inteligencia Artificial aplicada a tu negocio</h3>
+                        <p className="text-muted-foreground text-base leading-relaxed">
+                            Integramos modelos de IA —como GPT, Gemini y soluciones de visión computacional— directamente en tus flujos de trabajo. Desde chatbots empresariales y clasificación automática de documentos hasta análisis predictivo, convertimos los datos que ya tienes en ventajas competitivas reales.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Feature grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <Card className="border-border/40 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <RefreshCw className="h-8 w-8 text-primary" />
+                                <h3 className="text-lg font-semibold">Desarrollo Ágil</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Trabajamos en sprints cortos con entregas iterativas. Verás resultados reales en semanas, no meses, con total visibilidad en cada etapa del proceso.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-border/40 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <Zap className="h-8 w-8 text-primary" />
+                                <h3 className="text-lg font-semibold">Stack Tecnológico Moderno</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Usamos las tecnologías más demandadas del mercado: Next.js, Node.js, Python, cloud-native en AWS/GCP/Azure, y arquitecturas de microservicios preparadas para escalar.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-border/40 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <BarChart3 className="h-8 w-8 text-primary" />
+                                <h3 className="text-lg font-semibold">Escalabilidad desde el día 1</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Diseñamos arquitecturas que crecen con tu negocio. Desde una startup hasta miles de usuarios concurrentes, nuestras soluciones están listas para escalar sin rediseños costosos.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-border/40 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <ShieldCheck className="h-8 w-8 text-primary" />
+                                <h3 className="text-lg font-semibold">Calidad y Seguridad</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Cada línea de código pasa por revisión, pruebas automatizadas y estándares de seguridad. Entregamos software robusto, seguro y mantenible a largo plazo.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-border/40 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <Rocket className="h-8 w-8 text-primary" />
+                                <h3 className="text-lg font-semibold">Entrega Rápida</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Nuestra metodología de CI/CD y automatización de despliegues nos permite lanzar funcionalidades nuevas de forma rápida, segura y sin interrupciones en producción.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-border/40 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <Users className="h-8 w-8 text-primary" />
+                                <h3 className="text-lg font-semibold">Equipo Comprometido</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                No somos solo proveedores, somos tu socio tecnológico. Ofrecemos soporte continuo, documentación clara y acompañamiento post-lanzamiento para que tu solución siempre funcione al máximo.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+                </ScrollReveal>
+            </section>
+
+            <StatsCounter />
+            
+            <TechStack />
+
+            {/* Section 5 Nuestros clientes*/}
+            <section>
+                <ScrollReveal direction="up">
                 <div className="text-center mb-10">
                     <SubTitle Name={'Lo que dicen nuestros clientes'} />
                 </div>
@@ -166,10 +287,12 @@ export default function Homepage() {
                         </CardContent>
                     </Card>
                 </div>
+                </ScrollReveal>
             </section>
 
             {/* Section 5 formulario Contacto*/}
             <section>
+                <ScrollReveal direction="up">
                 <div className=" rounded-2xl p-8 md:p-12 border border-primary/10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
@@ -186,6 +309,7 @@ export default function Homepage() {
                         </div>
                     </div>
                 </div>
+                </ScrollReveal>
             </section>
         </div>
     )

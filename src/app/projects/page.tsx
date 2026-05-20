@@ -4,6 +4,7 @@ import AppTitle from "../../components/appTitle";
 import DescriptionText from "@/components/descriptionText";
 import { projects } from "../../data/projects";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export const metadata: Metadata = {
     title: "Proyectos y Casos de Estudio | Hertzios",
@@ -21,6 +22,8 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         transition: 'transform 0.2s ease-in-out',
+        backgroundColor: 'var(--card)',
+        color: 'var(--card-foreground)',
         '&:hover': {
             transform: 'translateY(-5px)',
             boxShadow: '0 8px 16px rgba(0,0,0,0.1)'
@@ -35,7 +38,9 @@ const styles = {
     chip: {
         marginRight: 1,
         marginBottom: 1,
-        fontSize: '0.75rem'
+        fontSize: '0.75rem',
+        color: 'var(--color-text-secondary)',
+        borderColor: 'var(--color-text-secondary)',
     },
     button: {
         marginTop: 'auto',
@@ -59,13 +64,13 @@ export default function ProjectsPage() {
                             <Card sx={styles.card}>
                                 <CardContent sx={styles.cardContent}>
                                     <Box>
-                                        <Typography variant="overline" color="primary" sx={{ fontWeight: 'bold' }}>
+                                        <Typography variant="overline" sx={{ fontWeight: 'bold', color: 'var(--color-primary)' }}>
                                             {project.industry}
                                         </Typography>
-                                        <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', mb: 1 }}>
+                                        <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', mb: 1, color: 'var(--color-text-primary)' }}>
                                             {project.title}
                                         </Typography>
-                                        <Typography variant="body2" color="text.secondary" paragraph>
+                                        <Typography variant="body2" paragraph sx={{ color: 'var(--color-text-secondary)' }}>
                                             {project.description}
                                         </Typography>
                                     </Box>
@@ -90,15 +95,30 @@ export default function ProjectsPage() {
                                         )}
                                     </Box>
 
-                                    <Button
-                                        variant="text"
-                                        color="primary"
-                                        endIcon={<ArrowForwardIcon />}
-                                        href={`/projects/${project.slug}`}
-                                        sx={styles.button}
-                                    >
-                                        Ver Caso de Estudio
-                                    </Button>
+                                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 'auto' }}>
+                                        <Button
+                                            variant="text"
+                                            color="primary"
+                                            endIcon={<ArrowForwardIcon />}
+                                            href={`/projects/${project.slug}`}
+                                            sx={styles.button}
+                                        >
+                                            Ver Caso de Estudio
+                                        </Button>
+                                        {project.url && (
+                                            <Button
+                                                variant="outlined"
+                                                color="primary"
+                                                endIcon={<OpenInNewIcon />}
+                                                href={project.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                sx={styles.button}
+                                            >
+                                                Visitar Sitio
+                                            </Button>
+                                        )}
+                                    </Box>
                                 </CardContent>
                             </Card>
                         </Grid>

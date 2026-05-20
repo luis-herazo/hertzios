@@ -36,6 +36,8 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        backgroundColor: 'var(--card)',
+        color: 'var(--card-foreground)',
     },
     cardContent: {
         flexGrow: 1,
@@ -105,6 +107,8 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         textAlign: 'center',
+        backgroundColor: 'var(--card)',
+        color: 'var(--card-foreground)',
     }
 
 }
@@ -150,7 +154,7 @@ export default function Services() {
                                     </List>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth>Ver más</Button>
+                                    <Button fullWidth href="/services/desarrollo-web-movil">Ver más</Button>
                                 </CardActions>
 
                             </Card>
@@ -176,7 +180,7 @@ export default function Services() {
                                     </List>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth>Ver más</Button>
+                                    <Button fullWidth href="/services/automatizacion-procesos">Ver más</Button>
                                 </CardActions>
 
                             </Card>
@@ -200,7 +204,7 @@ export default function Services() {
                                     </List>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth>Ver más</Button>
+                                    <Button fullWidth href="/services/integracion-sistemas">Ver más</Button>
                                 </CardActions>
                             </Card>
                         </Grid>
@@ -213,7 +217,7 @@ export default function Services() {
                                 <CardContent>
                                     <AppTitle Name="Construyamos juntos tu solución" ></AppTitle>
                                     <DescriptionText Name={subtitle} ></DescriptionText>
-                                    <Button >Contáctanos</Button>
+                                    <Button href="/contact">Contáctanos</Button>
                                 </CardContent>
                             </Card>
                         </Box>

@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Menu from "./menu";
 import Footer from "./footer";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,11 +81,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans text-foreground`}
       >
-        <Menu />
-        <main className="container mx-auto p-4 pt-20">
-          {children}
-        </main>
-        <Footer />
+        <AppRouterCacheProvider>
+          <Menu />
+          <main className="container mx-auto p-4 pt-20">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppFAB />
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

@@ -7,13 +7,15 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MemoryIcon from '@mui/icons-material/Memory';
 import StorageIcon from '@mui/icons-material/Storage';
 import CloudIcon from '@mui/icons-material/Cloud';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface Props {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const project = projects.find((p) => p.slug === params.slug);
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
     if (!project) return { title: "Proyecto no encontrado" };
 
     return {
@@ -53,12 +55,14 @@ const styles = {
         padding: 3,
         height: '100%',
         borderLeft: '4px solid var(--color-primary)',
-        bgcolor: 'background.paper'
+        backgroundColor: 'var(--card)',
+        color: 'var(--card-foreground)',
     }
 };
 
-export default function ProjectDetailPage({ params }: Props) {
-    const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectDetailPage({ params }: Props) {
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
 
     if (!project) {
         notFound();
@@ -78,12 +82,25 @@ export default function ProjectDetailPage({ params }: Props) {
                 {/* Header */}
                 <Box sx={styles.header}>
                     <Chip label={project.industry} color="primary" sx={{ mb: 2 }} />
-                    <Typography variant="h2" component="h1" sx={{ fontWeight: 'bold', mb: 2 }}>
+                    <Typography variant="h2" component="h1" sx={{ fontWeight: 'bold', mb: 2, color: 'var(--color-text-primary)' }}>
                         {project.title}
                     </Typography>
-                    <Typography variant="h5" color="text.secondary" sx={{ maxWidth: '800px', mx: 'auto' }}>
+                    <Typography variant="h5" sx={{ maxWidth: '800px', mx: 'auto', mb: project.url ? 3 : 0, color: 'var(--color-text-secondary)' }}>
                         {project.description}
                     </Typography>
+                    {project.url && (
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            endIcon={<OpenInNewIcon />}
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{ mt: 2 }}
+                        >
+                            Visitar {project.url.replace('https://www.', '')}
+                        </Button>
+                    )}
                 </Box>
 
                 <Divider sx={{ my: 6 }} />
@@ -92,24 +109,24 @@ export default function ProjectDetailPage({ params }: Props) {
                 <Grid container spacing={6}>
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h4" sx={styles.sectionTitle}>El Desafío</Typography>
-                        <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                        <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--color-text-primary)' }}>
                             {project.challenge}
                         </Typography>
                     </Grid>
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h4" sx={styles.sectionTitle}>La Solución</Typography>
-                        <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                        <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--color-text-primary)' }}>
                             {project.solution}
                         </Typography>
                     </Grid>
                 </Grid>
 
                 {/* Architecture & Tech Stack */}
-                <Box sx={{ my: 8, bgcolor: 'background.paper', p: 4, borderRadius: 2, boxShadow: 1 }}>
+                <Box sx={{ my: 8, backgroundColor: 'var(--card)', color: 'var(--card-foreground)', p: 4, borderRadius: 2, boxShadow: 1 }}>
                     <Typography variant="h4" sx={{ ...styles.sectionTitle, textAlign: 'center' }}>
                         Arquitectura Técnica
                     </Typography>
-                    <Typography variant="body1" paragraph sx={{ textAlign: 'center', mb: 4, maxWidth: '800px', mx: 'auto' }}>
+                    <Typography variant="body1" paragraph sx={{ textAlign: 'center', mb: 4, maxWidth: '800px', mx: 'auto', color: 'var(--color-text-primary)' }}>
                         {project.architecture}
                     </Typography>
 
@@ -120,7 +137,7 @@ export default function ProjectDetailPage({ params }: Props) {
                                     icon={<MemoryIcon />}
                                     label={tech}
                                     variant="outlined"
-                                    sx={{ px: 1, py: 2.5, fontSize: '1rem' }}
+                                    sx={{ px: 1, py: 2.5, fontSize: '1rem', color: 'var(--color-text-primary)', borderColor: 'var(--color-text-secondary)' }}
                                 />
                             </Grid>
                         ))}
@@ -153,7 +170,7 @@ export default function ProjectDetailPage({ params }: Props) {
                     textAlign: 'center',
                     py: 8,
                     px: 2,
-                    bgcolor: 'var(--color-secondary)',
+                    bgcolor: 'var(--color-primary)',
                     color: 'white',
                     borderRadius: 4
                 }}>
@@ -169,7 +186,7 @@ export default function ProjectDetailPage({ params }: Props) {
                         href="/contact"
                         sx={{
                             bgcolor: 'white',
-                            color: 'var(--color-secondary)',
+                            color: 'var(--color-primary)',
                             px: 4,
                             py: 1.5,
                             fontSize: '1.1rem',

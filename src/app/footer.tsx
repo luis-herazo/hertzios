@@ -3,13 +3,24 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import SubscribeForm from '@/components/subscribe-form';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-neutral-900 text-neutral-300 pt-16 pb-8">
+        <footer className="bg-neutral-900 text-neutral-300 pt-16 pb-8 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
             <div className="container mx-auto px-4">
+                {/* Newsletter Section */}
+                <div className="mb-16 pb-12 border-b border-neutral-800/50 text-center max-w-2xl mx-auto">
+                    <h3 className="text-2xl font-bold text-white mb-4">Únete a nuestra comunidad</h3>
+                    <p className="text-neutral-400 mb-8">
+                        Recibe nuestros mejores artículos, recursos y tendencias tecnológicas directamente en tu bandeja de entrada.
+                    </p>
+                    <SubscribeForm />
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     {/* Brand Section */}
                     <div className="space-y-4">
@@ -56,16 +67,16 @@ const Footer = () => {
                     <div className="space-y-4">
                         <h3 className="text-lg font-semibold text-white">Contacto</h3>
                         <ul className="space-y-3">
-                            <li className="flex items-start space-x-3">
-                                <Mail className="text-blue-500 mt-0.5 w-5 h-5" />
+                            <li className="flex items-start space-x-3 group">
+                                <Mail className="text-primary mt-0.5 w-5 h-5 group-hover:scale-110 transition-transform" />
                                 <span className="text-sm">contacto@hertzios.com</span>
                             </li>
-                            <li className="flex items-start space-x-3">
-                                <Phone className="text-blue-500 mt-0.5 w-5 h-5" />
+                            <li className="flex items-start space-x-3 group">
+                                <Phone className="text-primary mt-0.5 w-5 h-5 group-hover:scale-110 transition-transform" />
                                 <span className="text-sm">+58 424 159 9502</span>
                             </li>
-                            <li className="flex items-start space-x-3">
-                                <MapPin className="text-blue-500 mt-0.5 w-5 h-5" />
+                            <li className="flex items-start space-x-3 group">
+                                <MapPin className="text-primary mt-0.5 w-5 h-5 group-hover:scale-110 transition-transform" />
                                 <span className="text-sm">Caracas - Venezuela</span>
                             </li>
                         </ul>
