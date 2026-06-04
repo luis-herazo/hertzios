@@ -9,6 +9,9 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 export const metadata: Metadata = {
     title: "Proyectos y Casos de Estudio | Hertzios",
     description: "Explora nuestros casos de éxito y descubre cómo hemos ayudado a empresas a transformar sus negocios con tecnología.",
+    alternates: {
+        canonical: "/projects",
+    },
 };
 
 const styles = {

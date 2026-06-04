@@ -121,6 +121,9 @@ export const metadata: Metadata = {
     title: "Servicios",
     description:
         "Descubre nuestros servicios: Desarrollo Web/Móvil, Automatización de Procesos e Integración de Sistemas.",
+    alternates: {
+        canonical: "/services",
+    },
 };
 
 export default function Services() {

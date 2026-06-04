@@ -42,6 +42,9 @@ export const metadata: Metadata = {
     title: "Sobre Nosotros",
     description:
         "Conoce al equipo detrás de Hertzios. Apasionados por la tecnología y dedicados a impulsar el crecimiento de tu negocio.",
+    alternates: {
+        canonical: "/about",
+    },
 };
 
 export default function AboutPage() {

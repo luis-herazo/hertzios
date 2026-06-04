@@ -18,9 +18,12 @@ const description = 'Ahorra tiempo, optimiza procesos y escala tus operaciones c
 const subtitle = 'Nuestras Soluciones para tu empresa'
 
 export const metadata: Metadata = {
-    title: "Inicio",
+    title: "Hertzios | Desarrollo Web y Software a Medida",
     description:
-        "Potenciamos tu negocio con soluciones de software a medida. Desarrollo web, automatización e integración de sistemas.",
+        "Potenciamos tu negocio con soluciones de software a medida. Desarrollo de aplicaciones web, automatización de procesos e integración de sistemas.",
+    alternates: {
+        canonical: "/",
+    },
 };
 
 export default function Homepage() {
@@ -53,8 +56,9 @@ export default function Homepage() {
                         <div className="relative w-full aspect-square md:aspect-auto md:h-[400px]">
                             <Image
                                 src="/home.png"
-                                alt="Hertzios"
+                                alt="Hertzios - Soluciones digitales y desarrollo de software a medida"
                                 fill
+                                priority
                                 className="object-cover rounded-lg [mask-image:radial-gradient(circle,black_50%,transparent_100%)]"
                             />
                         </div>

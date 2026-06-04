@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import { login } from './actions'
 import AppTitle from "@/components/appTitle"
+
+export const metadata: Metadata = {
+  title: "Iniciar Sesión | Hertzios",
+  robots: {
+    index: false,
+    follow: false,
+  },
+  alternates: {
+    canonical: "/login",
+  },
+};
 
 export default async function LoginPage({
   searchParams,

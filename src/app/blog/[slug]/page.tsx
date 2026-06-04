@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Blog Hertzios`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
   };
 }
 
@@ -30,8 +33,35 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  const postDate = post.created_at ? new Date(post.created_at).toISOString() : new Date().toISOString();
+
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image ? [post.image] : [],
+    "datePublished": postDate,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hertzios",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.hertzios.com/icon.png"
+      }
+    }
+  };
+
   return (
     <article className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto">
         <Link 
           href="/blog" 

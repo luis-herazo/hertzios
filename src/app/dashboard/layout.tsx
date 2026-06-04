@@ -1,5 +1,13 @@
+import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 

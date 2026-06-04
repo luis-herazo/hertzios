@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import React from 'react';
 
 export const metadata: Metadata = {
-    title: "Política de Privacidad",
+    title: "Política de Privacidad | Hertzios",
     description:
-        "Política de privacidad de Hertzios. Conoce cómo recopilamos, usamos y protegemos tu información.",
+        "Nuestra política de privacidad detalla cómo recopilamos, usamos y protegemos tu información personal.",
+    alternates: {
+        canonical: "/privacidad",
+    },
 };
 
 export default function Privacidad() {

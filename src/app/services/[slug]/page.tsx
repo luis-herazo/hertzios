@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: `${service.title} | Hertzios`,
         description: service.fullDescription,
+        alternates: {
+            canonical: `/services/${slug}`,
+        },
     };
 }
 
@@ -83,8 +86,37 @@ export default async function ServiceDetailPage({ params }: Props) {
     const service = services.find((s) => s.slug === slug);
     if (!service) notFound();
 
+    const serviceJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": service.title,
+        "description": service.shortDescription,
+        "provider": {
+            "@type": "Organization",
+            "name": "Hertzios",
+            "url": "https://www.hertzios.com"
+        },
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": service.title,
+            "itemListElement": service.features.map((feature) => ({
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": feature.title,
+                    "description": feature.description
+                }
+            }))
+        }
+    };
+
     return (
         <Container maxWidth="lg">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+            />
             <Box sx={{ paddingTop: 15, paddingBottom: 10 }}>
 
                 {/* Back button */}

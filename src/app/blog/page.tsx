@@ -8,6 +8,9 @@ import DescriptionText from "@/components/descriptionText";
 export const metadata: Metadata = {
   title: "Blog | Hertzios",
   description: "Artículos sobre tecnología, desarrollo de software, automatización y tendencias digitales.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default async function BlogPage() {

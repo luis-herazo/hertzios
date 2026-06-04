@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   },
   description:
     "Transformamos tus ideas en realidad digital. Desarrollo web, diseño UI/UX y soluciones tecnológicas a medida para tu negocio.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Hertzios | Soluciones Digitales",
     description:
