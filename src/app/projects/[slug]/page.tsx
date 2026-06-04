@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!project) return { title: "Proyecto no encontrado" };
 
     return {
-        title: `${project.title} | Hertzios Case Study`,
-        description: project.description,
+        title: project.title,
+        description: project.description.length > 155 ? project.description.slice(0, 152) + "..." : project.description,
         alternates: {
             canonical: `/projects/${slug}`,
         },

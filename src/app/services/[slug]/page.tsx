@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const service = services.find((s) => s.slug === slug);
     if (!service) return { title: "Servicio no encontrado" };
     return {
-        title: `${service.title} | Hertzios`,
-        description: service.fullDescription,
+        title: service.title,
+        description: service.fullDescription.length > 155 ? service.fullDescription.slice(0, 152) + "..." : service.fullDescription,
         alternates: {
             canonical: `/services/${slug}`,
         },

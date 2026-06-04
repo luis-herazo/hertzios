@@ -46,7 +46,7 @@ export default function ContactPage() {
                             </div>
                             <div>
                                 <h3 className="font-semibold text-sm">Correo Electrónico</h3>
-                                <p className="text-sm text-muted-foreground">contacto@hertzios.com</p>
+                                <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "<!--email_off-->contacto@hertzios.com<!--/email_off-->" }} />
                             </div>
                         </div>
 

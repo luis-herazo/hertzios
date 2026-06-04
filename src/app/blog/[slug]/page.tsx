@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "Post no encontrado" };
 
   return {
-    title: `${post.title} | Blog Hertzios`,
-    description: post.excerpt,
+    title: post.title,
+    description: post.excerpt.length > 155 ? post.excerpt.slice(0, 152) + "..." : post.excerpt,
     alternates: {
       canonical: `/blog/${slug}`,
     },

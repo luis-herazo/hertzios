@@ -69,7 +69,7 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li className="flex items-start space-x-3 group">
                                 <Mail className="text-primary mt-0.5 w-5 h-5 group-hover:scale-110 transition-transform" />
-                                <span className="text-sm">contacto@hertzios.com</span>
+                                <span className="text-sm" dangerouslySetInnerHTML={{ __html: "<!--email_off-->contacto@hertzios.com<!--/email_off-->" }} />
                             </li>
                             <li className="flex items-start space-x-3 group">
                                 <Phone className="text-primary mt-0.5 w-5 h-5 group-hover:scale-110 transition-transform" />

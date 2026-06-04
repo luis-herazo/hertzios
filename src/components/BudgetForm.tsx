@@ -269,7 +269,7 @@ export default function BudgetForm() {
                             El equipo de Hertzios transformó por completo nuestra eficiencia operativa con una automatización a medida. ¡Profesionales, rápidos y muy recomendables!
                         </Typography>
                         <Box display="flex" alignItems="center">
-                            <Avatar src="/avatar-ana.jpg" sx={{ width: 48, height: 48, mr: 2 }}>AG</Avatar>
+                            <Avatar sx={{ width: 48, height: 48, mr: 2 }}>AG</Avatar>
                             <Box>
                                 <Typography variant="subtitle2" fontWeight={700}>Ana García</Typography>
                                 <Typography variant="caption" color="text.secondary">CEO, InnovaTech Solutions</Typography>
