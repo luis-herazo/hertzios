@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 import AppTitle from "../../components/appTitle";
 import SubTitle from "../../components/subTitle";
 import DescriptionText from "@/components/descriptionText";
@@ -82,7 +83,11 @@ export default function AboutPage() {
                         <SubTitle Name="Nuestro Equipo" />
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Typography sx={styles.cardTitle}>Luis Herazo</Typography>
+                        <Link href="/landing/luis-herazo" style={{ textDecoration: 'none' }}>
+                            <Typography sx={{ ...styles.cardTitle, '&:hover': { color: 'var(--color-primary)' }, cursor: 'pointer', transition: 'color 0.2s' }}>
+                                Luis Herazo
+                            </Typography>
+                        </Link>
                         <Typography sx={styles.cardContent}>CEO & Founder</Typography>
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4 }}>

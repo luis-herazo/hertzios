@@ -211,6 +211,36 @@ export default function Services() {
                                 </CardActions>
                             </Card>
                         </Grid>
+                        <Grid size={12}>
+                            <Card sx={{ ...styles.card, border: '1px dashed var(--color-secondary-light)', mt: 3, p: 1 }}>
+                                <CardContent sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
+                                        <Typography sx={{ ...styles.cardTitle, color: 'var(--color-secondary)', mb: 1 }} component="div">
+                                            Consultoría Especializada en TI & Operaciones
+                                        </Typography>
+                                        <Typography sx={styles.cardContent}>
+                                            Saneamiento de inventarios físicos y gobierno de datos con Marcelo García. Estandarice sus procesos, elimine fugas de stock y construya KPIs gerenciales confiables.
+                                        </Typography>
+                                    </Box>
+                                    <Button 
+                                        variant="contained" 
+                                        href="/landing/marcelo-garcia" 
+                                        sx={{ 
+                                            flexShrink: 0, 
+                                            bgcolor: 'var(--color-secondary)', 
+                                            color: 'white', 
+                                            textTransform: 'none',
+                                            fontWeight: 'bold',
+                                            px: 3,
+                                            py: 1.5,
+                                            '&:hover': { bgcolor: 'var(--color-secondary-light)' } 
+                                        }}
+                                    >
+                                        Ver Consultoría
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     </Grid>
                 </Box>
                 <Box>

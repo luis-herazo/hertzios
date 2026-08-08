@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AppTitle from "../../components/appTitle";
 import SubTitle from "../../components/subTitle";
 import DescriptionText from "@/components/descriptionText";
-import { Code, Bot, Cable, Lightbulb, Palette, Rocket, Brain, Sparkles, Zap, RefreshCw, ShieldCheck, BarChart3, Users } from 'lucide-react';
+import { Code, Bot, Cable, Lightbulb, Palette, Rocket, Brain, Sparkles, Zap, RefreshCw, ShieldCheck, BarChart3, Users, ArrowRight } from 'lucide-react';
 import HomeContactForm from "@/components/HomeContactForm";
 import Link from "next/link";
 import Image from "next/image";
@@ -110,6 +110,17 @@ export default function Homepage() {
                             </p>
                         </CardContent>
                     </Card>
+                </div>
+
+                <div className="mt-10 text-center animate-in">
+                    <div className="inline-block p-4 rounded-xl border border-primary/10 bg-primary/5 hover:bg-primary/10 transition-colors">
+                        <p className="text-sm text-foreground/80">
+                            ¿Buscas gobierno de datos, auditoría forense o control de inventarios?{" "}
+                            <Link href="/landing/marcelo-garcia" className="text-primary hover:underline font-bold inline-flex items-center gap-1">
+                                Ver Consultoría Especializada de Marcelo García <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </p>
+                    </div>
                 </div>
                 </ScrollReveal>
             </section>

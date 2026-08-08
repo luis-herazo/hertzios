@@ -70,6 +70,15 @@ export default async function DashboardLayout({
               </svg>
               Suscriptores
             </Link>
+            <Link 
+              href="/dashboard/landings" 
+              className="flex items-center px-4 py-3 text-sm font-medium rounded-xl text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+            >
+              <svg className="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              Landings
+            </Link>
           </nav>
           
           <div className="p-4 border-t border-border/50 mb-4">
@@ -97,6 +106,7 @@ export default async function DashboardLayout({
             <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground">Posts</Link>
             <Link href="/dashboard/create" className="text-sm font-medium text-muted-foreground hover:text-foreground">Crear</Link>
             <Link href="/dashboard/subscribers" className="text-sm font-medium text-muted-foreground hover:text-foreground">Suscritos</Link>
+            <Link href="/dashboard/landings" className="text-sm font-medium text-muted-foreground hover:text-foreground">Landings</Link>
           </div>
         </div>
 
